@@ -4,7 +4,7 @@ Welcome to my personal portfolio repository! This is a modern, highly interactiv
 
 ## 🚀 Live Demo
 
-You can view the live website here: [Live Demo](https://ram.github.io/RamPortfolio) *(Update this link to your actual deployment URL if it changes)*
+You can view the live website here: [Live Demo](https://ramdivgi.github.io/portfolio/)
 
 ---
 
