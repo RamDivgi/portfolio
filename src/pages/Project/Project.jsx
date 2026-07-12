@@ -36,8 +36,8 @@ const projects = [
       "Framer Motion",
       "JavaScript"
     ],
-    github: "https://github.com/RamDivgi/Portfolio11",
-    demo: "https://RamDivgi.github.io/Portfolio11"
+    github: "https://github.com/RamDivgi/portfolio",
+    demo: "https://ramdivgi.github.io/portfolio/"
   },
 
   {
