@@ -1,0 +1,169 @@
+/* =========================================
+   Large Desktop (1400px+)
+========================================= */
+
+@media (min-width: 1400px) {
+
+}
+
+/* =========================================
+   Laptop
+========================================= */
+
+@media (max-width: 1200px) {
+
+}
+
+/* =========================================
+   Tablet & Mobile Nav (<1024px)
+========================================= */
+
+@media (max-width: 1024px) {
+    .header .desktop-nav {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .header {
+        width: 95%;
+        padding: 12px 20px;
+    }
+
+    /* Projects */
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Services */
+    .services-container {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================
+   Tablet
+========================================= */
+
+@media (max-width: 992px) {
+    /* About */
+    .about .content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    .text-about p {
+        text-align: center;
+    }
+    
+    /* Contact */
+    .contact-container {
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
+        text-align: center;
+    }
+    .info-item {
+        justify-content: center;
+    }
+    .contact-form {
+        max-width: 100%;
+    }
+    
+    /* Hero */
+    .hero .buttn {
+        top: auto;
+        bottom: 8%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 768px) {
+    /* Typography / Spacing */
+    .title {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+    
+    /* Projects */
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    /* Skills */
+    .skills-track {
+        font-size: 40px;
+        gap: 40px;
+    }
+    
+    /* Hero Buttons */
+    .hero .buttn {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        left: 0;
+        transform: none;
+        align-items: center;
+    }
+    .hero .buttn .btn-about {
+        display: none;
+    }
+    .hero .buttn .btn-cv {
+        text-align: center;
+        width: auto;
+        min-width: 200px;
+    }
+}
+
+/* =========================================
+   Small Mobile
+========================================= */
+
+@media (max-width: 480px) {
+    /* General Padding */
+    .about, .project, .services, .contact, .achievements, .education, .experience {
+        padding: 40px 20px;
+        margin: 40px auto;
+    }
+    
+    /* About */
+    .photo-card {
+        width: 280px;
+        height: 380px;
+    }
+    
+    /* Services */
+    .service-card {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    /* Timeline adjustments for very small screens */
+    .timeline-card {
+        margin-left: 45px;
+        padding: 20px;
+    }
+    .timeline-dot {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        left: -2px;
+    }
+    .timeline::before {
+        left: 14px;
+    }
+}
