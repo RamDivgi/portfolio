@@ -1,4 +1,4 @@
-# 💻 Ram Divgi - Personal Portfolio Showcase
+# 💻 Ram's Personal Portfolio Showcase
 
 Welcome to my personal portfolio repository! This is a modern, highly interactive, and elegant portfolio website built to present my projects, skills, professional journey, and achievements.
 
