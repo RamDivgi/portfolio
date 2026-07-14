@@ -4,7 +4,7 @@ Welcome to my personal portfolio repository! This is a modern, highly interactiv
 
 ## 🚀 Live Demo
 
-You can view the live website here: [Live Demo](https://ramdivgi.github.io/portfolio/)
+You can view the live website [here](https://ramdivgi.github.io/portfolio/)
 ---
 
 ## 🌟 Website Sections
