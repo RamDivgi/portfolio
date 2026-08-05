@@ -4,9 +4,6 @@ import { motion } from "framer-motion";
 import imgPDF from "../../assets/images/docsphere.png";
 import imgPortfolio from "../../assets/images/portfolio.png";
 import imgTraffic from "../../assets/images/traffic.png";
-import img4 from "../../assets/images/WordPress dashboard design concept.jpg";
-import img5 from "../../assets/images/Game Dashboard Design.jpg";
-import img6 from "../../assets/images/Task manager app.jpg";
 
 const projects = [
   {

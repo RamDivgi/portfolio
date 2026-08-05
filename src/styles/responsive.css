@@ -104,11 +104,7 @@
         text-align: center;
     }
     
-    /* Skills */
-    .skills-track {
-        font-size: 40px;
-        gap: 40px;
-    }
+
     
     /* Hero Buttons */
     .hero .buttn {
@@ -126,6 +122,17 @@
         text-align: center;
         width: auto;
         min-width: 200px;
+        background: rgba(0, 0, 0, 0.7); /* Darkened background for high readability */
+        color: #ffffff; /* Highly visible text color */
+        border: 2px solid rgba(255, 255, 255, 0.4); /* Highlight border */
+        backdrop-filter: blur(8px); /* Premium glassmorphism */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05); /* Distinct shadow and inner glow */
+    }
+    .hero .buttn .btn-cv:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        border-color: #ffffff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
 }
 
