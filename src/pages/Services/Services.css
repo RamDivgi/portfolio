@@ -1,73 +1,58 @@
-/* SERVICES */
-
-.services{
-    margin:70px auto;
-    max-width:1200px;
-    padding:40px;
+.services {
+    margin: 80px auto;
+    max-width: 1200px;
+    padding: 0 40px;
 }
 
-/* TITLE */
-
-.title{
-    margin-bottom:70px;
-    font-size:42px;
-    color: var(--text-primary);
-    text-align:center;
-    position:relative;
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
-.title::after{
-    content:"";
-    width:120px;
-    height:3px;
-    background: var(--accent);
-    display:block;
-    margin:15px auto 0;
-    border-radius:2px;
-}
-
-
-.services-container{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-}
-
-
-.service-card{
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    -webkit-backdrop-filter: var(--blur); /* Safari support */
-    backdrop-filter: var(--blur);
-    padding: 40px;
-    border-radius: 12px;
-    width: 300px;
+.service-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 32px 24px;
+    border-radius: 14px;
+    width: 340px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: 0.3s;
+    transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.service-card:hover{
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 20px 40px rgba(0,0,0,0.8);
-    border-color: var(--accent-light);
+.service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
-
-.service-icon{
-    font-size:45px;
-    color: var(--text-primary);
-    margin-bottom:20px;
+.service-icon {
+    font-size: 36px;
+    color: #e2e8f0;
+    margin-bottom: 18px;
 }
 
-
-.service-card h3{
-    margin-bottom:15px;
-    color: var(--text-primary);
+.service-card h3 {
+    margin-bottom: 10px;
+    color: #f8fafc;
+    font-size: 18px;
+    font-weight: 600;
 }
 
+.service-card p {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 14.5px;
+}
 
-.service-card p{
-    color: var(--text-secondary);
-    line-height:1.6;
+@media (max-width: 768px) {
+    .services {
+        margin: 50px auto;
+        padding: 0 20px;
+    }
+
+    .service-card {
+        width: 100%;
+        max-width: 360px;
+    }
 }

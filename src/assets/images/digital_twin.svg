@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090c12"/>
+      <stop offset="50%" stop-color="#101522"/>
+      <stop offset="100%" stop-color="#080a0f"/>
+    </linearGradient>
+    <linearGradient id="corridorGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#60a5fa" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bgGrad)"/>
+  <g stroke="#60a5fa" stroke-opacity="0.08" stroke-width="1" stroke-dasharray="3 6">
+    <line x1="80" y1="140" x2="1040" y2="620"/>
+    <line x1="160" y1="110" x2="1120" y2="590"/>
+    <line x1="240" y1="80" x2="1200" y2="560"/>
+    <line x1="0" y1="230" x2="960" y2="710"/>
+    <line x1="0" y1="320" x2="800" y2="720"/>
+    <line x1="1200" y1="140" x2="240" y2="620"/>
+    <line x1="1120" y1="110" x2="160" y2="590"/>
+    <line x1="1040" y1="80" x2="80" y2="560"/>
+    <line x1="1280" y1="230" x2="320" y2="710"/>
+    <line x1="1280" y1="320" x2="480" y2="720"/>
+  </g>
+  <g stroke="#60a5fa" stroke-opacity="0.18" stroke-width="1.2">
+    <path d="M 220 220 v 8 m -4 -4 h 8 M 420 150 v 8 m -4 -4 h 8 M 860 150 v 8 m -4 -4 h 8 M 1060 220 v 8 m -4 -4 h 8 M 220 500 v 8 m -4 -4 h 8 M 1060 500 v 8 m -4 -4 h 8"/>
+  </g>
+  <polygon points="460,150 1020,430 980,450 420,170" fill="#131826" stroke="#232d42" stroke-width="1"/>
+  <polygon points="260,250 1100,670 1060,690 220,270" fill="#131826" stroke="#232d42" stroke-width="1"/>
+  <polygon points="180,390 820,710 780,730 140,410" fill="#131826" stroke="#232d42" stroke-width="1"/>
+  <polygon points="820,150 180,470 220,490 860,170" fill="#131826" stroke="#232d42" stroke-width="1"/>
+  <polygon points="1020,250 260,630 300,650 1060,270" fill="#151b2a" stroke="#27334a" stroke-width="1"/>
+  <polygon points="1140,370 420,730 460,750 1180,390" fill="#131826" stroke="#232d42" stroke-width="1"/>
+  <g stroke="#334155" stroke-width="1.2" stroke-dasharray="8 12">
+    <line x1="440" y1="160" x2="1000" y2="440"/>
+    <line x1="240" y1="260" x2="1080" y2="680"/>
+    <line x1="160" y1="400" x2="800" y2="720"/>
+    <line x1="840" y1="160" x2="200" y2="480"/>
+    <line x1="1040" y1="260" x2="280" y2="640"/>
+    <line x1="1160" y1="380" x2="440" y2="740"/>
+  </g>
+  <g id="bldg-nw">
+    <polygon points="494,182 530,200 530,132 494,114" fill="#161c28" stroke="#2d384d" stroke-width="1"/>
+    <polygon points="530,200 566,182 566,114 530,132" fill="#1e2636" stroke="#36435c" stroke-width="1"/>
+    <polygon points="530,132 566,114 530,96 494,114" fill="#283247" stroke="#445575" stroke-width="1"/>
+    <line x1="504" y1="130" x2="520" y2="138" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1.5"/>
+    <line x1="504" y1="148" x2="520" y2="156" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1.5"/>
+    <line x1="504" y1="166" x2="520" y2="174" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1.5"/>
+  </g>
+  <g id="bldg-ne">
+    <polygon points="712,182 750,201 750,141 712,122" fill="#161c28" stroke="#2d384d" stroke-width="1"/>
+    <polygon points="750,201 788,182 788,122 750,141" fill="#1e2636" stroke="#36435c" stroke-width="1"/>
+    <polygon points="750,141 788,122 750,103 712,122" fill="#283247" stroke="#445575" stroke-width="1"/>
+  </g>
+  <g id="bldg-north-tower">
+    <polygon points="590,295 640,320 640,165 590,140" fill="#18202e" stroke="#2e3b52" stroke-width="1"/>
+    <polygon points="640,320 690,295 690,140 640,165" fill="#222c3f" stroke="#3b4b66" stroke-width="1"/>
+    <polygon points="640,165 690,140 640,115 590,140" fill="#2c384e" stroke="#4a5d7e" stroke-width="1"/>
+    <polygon points="625,142 655,157 655,145 625,130" fill="#1f2838" stroke="#3f4f6b" stroke-width="1"/>
+    <line x1="605" y1="170" x2="630" y2="182" stroke="#60a5fa" stroke-opacity="0.25" stroke-width="1.5"/>
+    <line x1="605" y1="200" x2="630" y2="212" stroke="#60a5fa" stroke-opacity="0.25" stroke-width="1.5"/>
+    <line x1="605" y1="230" x2="630" y2="242" stroke="#60a5fa" stroke-opacity="0.25" stroke-width="1.5"/>
+    <line x1="605" y1="260" x2="630" y2="272" stroke="#60a5fa" stroke-opacity="0.25" stroke-width="1.5"/>
+    <line x1="650" y1="182" x2="675" y2="170" stroke="#93c5fd" stroke-opacity="0.2" stroke-width="1.5"/>
+    <line x1="650" y1="212" x2="675" y2="200" stroke="#93c5fd" stroke-opacity="0.2" stroke-width="1.5"/>
+    <line x1="650" y1="242" x2="675" y2="230" stroke="#93c5fd" stroke-opacity="0.2" stroke-width="1.5"/>
+    <line x1="650" y1="272" x2="675" y2="260" stroke="#93c5fd" stroke-opacity="0.2" stroke-width="1.5"/>
+  </g>
+  <g id="bldg-west">
+    <polygon points="455,362 500,385 500,295 455,272" fill="#171d2a" stroke="#2d394e" stroke-width="1"/>
+    <polygon points="500,385 545,362 545,272 500,295" fill="#20293a" stroke="#37455e" stroke-width="1"/>
+    <polygon points="500,295 545,272 500,250 455,272" fill="#2a354b" stroke="#465775" stroke-width="1"/>
+    <line x1="467" y1="300" x2="492" y2="312" stroke="#60a5fa" stroke-opacity="0.2" stroke-width="1.5"/>
+    <line x1="467" y1="324" x2="492" y2="336" stroke="#60a5fa" stroke-opacity="0.2" stroke-width="1.5"/>
+    <line x1="467" y1="348" x2="492" y2="360" stroke="#60a5fa" stroke-opacity="0.2" stroke-width="1.5"/>
+  </g>
+  <g id="bldg-east">
+    <polygon points="735,362 780,385 780,285 735,262" fill="#171d2a" stroke="#2d394e" stroke-width="1"/>
+    <polygon points="780,385 825,362 825,262 780,285" fill="#20293a" stroke="#37455e" stroke-width="1"/>
+    <polygon points="780,285 825,262 780,240 735,262" fill="#2a354b" stroke="#465775" stroke-width="1"/>
+    <line x1="792" y1="284" x2="815" y2="272" stroke="#60a5fa" stroke-opacity="0.2" stroke-width="1.5"/>
+    <line x1="792" y1="310" x2="815" y2="298" stroke="#60a5fa" stroke-opacity="0.2" stroke-width="1.5"/>
+    <line x1="792" y1="336" x2="815" y2="324" stroke="#60a5fa" stroke-opacity="0.2" stroke-width="1.5"/>
+  </g>
+  <g id="bldg-south">
+    <polygon points="595,432 640,455 640,390 595,367" fill="#151b27" stroke="#2b364a" stroke-width="1"/>
+    <polygon points="640,455 685,432 685,367 640,390" fill="#1d2535" stroke="#334057" stroke-width="1"/>
+    <polygon points="640,390 685,367 640,345 595,367" fill="#273245" stroke="#41516e" stroke-width="1"/>
+  </g>
+  <path d="M 360 360 L 500 430 L 640 360 L 780 290 L 920 220"
+        fill="none" stroke="url(#corridorGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 360 360 L 500 430 L 640 360 L 780 290 L 920 220"
+        fill="none" stroke="#60a5fa" stroke-width="3.5" stroke-dasharray="9 6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="signal-behind" transform="translate(516, 416)">
+    <line x1="0" y1="0" x2="0" y2="-20" stroke="#64748b" stroke-width="2"/>
+    <rect x="-5" y="-32" width="10" height="15" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <circle cx="0" cy="-27" r="3.2" fill="#ef4444"/>
+    <circle cx="0" cy="-21" r="2.5" fill="#064e3b" opacity="0.6"/>
+  </g>
+  <g id="signal-center-corridor" transform="translate(622, 348)">
+    <line x1="0" y1="0" x2="0" y2="-22" stroke="#64748b" stroke-width="2"/>
+    <rect x="-5" y="-34" width="10" height="15" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <circle cx="0" cy="-29" r="2.5" fill="#7f1d1d" opacity="0.6"/>
+    <circle cx="0" cy="-23" r="3.5" fill="#22c55e"/>
+  </g>
+  <g id="signal-center-cross" transform="translate(658, 372)">
+    <line x1="0" y1="0" x2="0" y2="-18" stroke="#64748b" stroke-width="1.8"/>
+    <rect x="-4.5" y="-28" width="9" height="13" rx="2.5" fill="#0f172a" stroke="#334155" stroke-width="0.9"/>
+    <circle cx="0" cy="-24" r="3" fill="#ef4444"/>
+    <circle cx="0" cy="-18" r="2" fill="#064e3b" opacity="0.6"/>
+  </g>
+  <g id="signal-ahead-corridor" transform="translate(762, 278)">
+    <line x1="0" y1="0" x2="0" y2="-22" stroke="#64748b" stroke-width="2"/>
+    <rect x="-5" y="-34" width="10" height="15" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <circle cx="0" cy="-29" r="2.5" fill="#7f1d1d" opacity="0.6"/>
+    <circle cx="0" cy="-23" r="3.5" fill="#22c55e"/>
+  </g>
+  <g id="ambulance" transform="translate(0, 0)">
+    <ellipse cx="572" cy="402" rx="26" ry="11" fill="#070a10" opacity="0.7"/>
+    <ellipse cx="555" cy="403" rx="4" ry="2.5" fill="#0f172a"/>
+    <ellipse cx="583" cy="389" rx="4" ry="2.5" fill="#0f172a"/>
+    <polygon points="548,400 588,380 588,362 548,382" fill="#f8fafc" stroke="#94a3b8" stroke-width="0.8"/>
+    <polygon points="550,392 586,374 586,370 550,388" fill="#ef4444"/>
+    <rect x="562" y="380" width="8" height="2.8" rx="0.5" fill="#ef4444" transform="rotate(-26.5 566 381.4)"/>
+    <rect x="564.6" y="377" width="2.8" height="8" rx="0.5" fill="#ef4444" transform="rotate(-26.5 566 381.4)"/>
+    <polygon points="548,400 558,405 558,387 548,382" fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.8"/>
+    <polygon points="550,396 556,399 556,391 550,388" fill="#1e293b"/>
+    <polygon points="588,380 598,375 598,362 588,362" fill="#334155" stroke="#64748b" stroke-width="0.8"/>
+    <polygon points="588,376 596,372 596,364 588,365" fill="#0f172a"/>
+    <polygon points="548,382 558,387 598,367 588,362" fill="#ffffff" stroke="#94a3b8" stroke-width="0.8"/>
+    <polygon points="568,374 574,377 579,374.5 573,371.5" fill="#e2e8f0"/>
+    <circle cx="571" cy="371" r="2.8" fill="#3b82f6"/>
+    <circle cx="576" cy="373.5" r="2.8" fill="#ef4444"/>
+  </g>
+  <g id="marker-incident" transform="translate(360, 360)">
+    <circle cx="0" cy="0" r="13" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-opacity="0.4"/>
+    <circle cx="0" cy="0" r="6" fill="#ef4444"/>
+    <circle cx="0" cy="0" r="2" fill="#ffffff"/>
+    <rect x="-35" y="14" width="70" height="20" rx="4" fill="#0b1120" stroke="#ef4444" stroke-opacity="0.6" stroke-width="1"/>
+    <text x="0" y="28" text-anchor="middle" fill="#fca5a5" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" letter-spacing="0.4">Incident</text>
+  </g>
+  <g id="marker-hospital" transform="translate(920, 220)">
+    <ellipse cx="0" cy="6" rx="26" ry="13" fill="#131c2e" stroke="#60a5fa" stroke-opacity="0.3" stroke-width="1"/>
+    <rect x="-14" y="-22" width="28" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+    <path d="M -7 -8 H 7 M 0 -15 V -1" stroke="#ef4444" stroke-width="3" stroke-linecap="square"/>
+    <rect x="-34" y="-48" width="68" height="20" rx="4" fill="#0b1120" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <text x="0" y="-34" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" letter-spacing="0.4">Hospital</text>
+  </g>
+  <g transform="translate(680, 328)">
+    <rect x="0" y="0" width="118" height="24" rx="12" fill="#0a101d" stroke="#60a5fa" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="12" cy="12" r="3.5" fill="#22c55e"/>
+    <text x="22" y="16" fill="#93c5fd" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" letter-spacing="0.4">Green Corridor</text>
+  </g>
+  <g transform="translate(56, 56)">
+    <text x="0" y="0" fill="#60a5fa" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2">CITY DIGITAL TWIN</text>
+    <text x="0" y="20" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="400" letter-spacing="0.2">Emergency Vehicle Preemption Simulation</text>
+  </g>
+</svg>

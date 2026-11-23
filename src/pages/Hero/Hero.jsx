@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useCallback, useState } from "react";
+import { FaFileDownload, FaGithub } from "react-icons/fa";
 import "./Hero.css";
 
 const BRUSH_SIZE = 200;  // stroke width in px
-const IMG_SCALE = 1; // img4 size relative to hero (full photo fit)
 const DECAY_RATE = 0.05; // alpha reduction per frame (lower = longer trail)
 
 function randomBetween(a, b) { return a + Math.random() * (b - a); }
@@ -16,6 +16,7 @@ export default function Hero() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const canvasRef = useRef(null);   // visible canvas
   const brushRef = useRef(null);   // offscreen mask (accumulates strokes)
   const imgRef = useRef(null);
@@ -34,11 +35,9 @@ export default function Hero() {
     const img2 = img2Ref.current;
     if (!canvas || !pc || !img || !img2) return;
 
-    // Create offscreen brush canvas
     const brushCanvas = document.createElement("canvas");
     brushRef.current = brushCanvas;
 
-    // Create a temporary canvas for img4 composition
     const tempCanvas = document.createElement("canvas");
     const tctx = tempCanvas.getContext("2d");
 
@@ -76,7 +75,6 @@ export default function Hero() {
     }));
 
     const loop = () => {
-      // 1. Update & Draw Particles
       pctx.clearRect(0, 0, pc.width, pc.height);
       particlesRef.current.forEach(p => {
         p.x += p.vx; p.y += p.vy;
@@ -89,22 +87,19 @@ export default function Hero() {
         pctx.fill();
       });
 
-      // 2. Brush Decay
       bctx.globalCompositeOperation = "destination-out";
       bctx.fillStyle = `rgba(0, 0, 0, ${DECAY_RATE})`;
       bctx.fillRect(0, 0, brushCanvas.width, brushCanvas.height);
       bctx.globalCompositeOperation = "source-over";
 
-      // 3. Render Main Canvas
       if (img.complete && img2.complete) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Helper for object-fit: cover
         const drawCover = (context, image) => {
           const canvasRatio = canvas.width / canvas.height;
           const imgRatio = image.width / image.height;
           let w, h, x, y;
-          const alignTop = window.innerWidth <= 768; // Align to top on mobile
+          const alignTop = window.innerWidth <= 768;
           if (canvasRatio > imgRatio) {
             w = canvas.width;
             h = canvas.width / imgRatio;
@@ -119,17 +114,14 @@ export default function Hero() {
           context.drawImage(image, x, y, w, h);
         };
 
-        // A. Draw img2 (the layer underneath)
         drawCover(ctx, img2);
 
-        // B. Compose img4 on temp canvas and apply mask
         tctx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
         drawCover(tctx, img);
         tctx.globalCompositeOperation = "destination-out";
         tctx.drawImage(brushCanvas, 0, 0);
         tctx.globalCompositeOperation = "source-over";
 
-        // C. Draw the interactive img4 layer onto main canvas
         ctx.drawImage(tempCanvas, 0, 0);
       }
 
@@ -145,7 +137,6 @@ export default function Hero() {
     };
   }, []);
 
-  /* ── Paint a connected brush stroke from last pos → current pos ── */
   const paintBrush = useCallback((pos) => {
     const brush = brushRef.current;
     if (!brush) return;
@@ -164,7 +155,6 @@ export default function Hero() {
     lastPosRef.current = pos;
   }, []);
 
-  /* ── Pointer move: paint stroke (Mouse + Touch + Pen) ── */
   const handlePointerMove = useCallback((e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -173,13 +163,10 @@ export default function Hero() {
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
 
-    // For pointer events, clientX/clientY works directly for both touch and mouse!
     const pos = { x: (e.clientX - rect.left) * scaleX, y: (e.clientY - rect.top) * scaleY };
-
     paintBrush(pos);
   }, [paintBrush]);
 
-  /* ── Pointer leave/end: break stroke continuity ── */
   const handlePointerLeave = useCallback(() => {
     lastPosRef.current = null;
     clearTimeout(recoveryTimeoutRef.current);
@@ -189,22 +176,20 @@ export default function Hero() {
         const bctx = brush.getContext("2d");
         bctx.clearRect(0, 0, brush.width, brush.height);
       }
-    }, 1000); // Clear brush completely after 1 second of inactivity
+    }, 1000);
   }, []);
 
-  /* ── Letter animation ── */
-  const sentence = "Hi! I'm RAM";
-  const letterVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.07, duration: 0.5, ease: "easeOut" } }),
-  };
+  const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
 
   return (
     <div className="hero" id="hero">
-
       {/* Background photo */}
       <div className="hero-bg">
-        <img src={isMobile ? "mobileimg2.jpg" : "photo.jpeg"} alt="Background" className="bg-image" />
+        <img 
+          src={isMobile ? `${import.meta.env.BASE_URL}mobileimg2.jpg` : `${import.meta.env.BASE_URL}photo.jpeg`} 
+          alt="Shantaram S Divgi backdrop portrait" 
+          className="bg-image" 
+        />
         <div className="overlay"></div>
       </div>
 
@@ -212,32 +197,50 @@ export default function Hero() {
       <canvas ref={particleCanvasRef} className="particle-canvas" />
 
       {/* Hidden source imgs */}
-      <img ref={imgRef} src={isMobile ? "mobileimg1.jpg" : "img4.png"} alt="" style={{ display: "none" }} crossOrigin="anonymous" />
-      <img ref={img2Ref} src={isMobile ? "mobileimg2.jpg" : "img2.jpeg"} alt="" style={{ display: "none" }} crossOrigin="anonymous" />
+      <img ref={imgRef} src={isMobile ? `${import.meta.env.BASE_URL}mobileimg1.jpg` : `${import.meta.env.BASE_URL}img4.png`} alt="" style={{ display: "none" }} crossOrigin="anonymous" />
+      <img ref={img2Ref} src={isMobile ? `${import.meta.env.BASE_URL}mobileimg2.jpg` : `${import.meta.env.BASE_URL}img2.jpeg`} alt="" style={{ display: "none" }} crossOrigin="anonymous" />
 
       {/* Brush canvas */}
       <canvas ref={canvasRef} className="anime-canvas" onPointerMove={handlePointerMove} onPointerLeave={handlePointerLeave} onPointerUp={handlePointerLeave} onPointerCancel={handlePointerLeave} />
 
-      {/* Animated greeting */}
-      <div className="hero-greeting">
-        {sentence.split("").map((char, i) => (
-          <motion.span key={i} custom={i} variants={letterVariants} initial="hidden" animate="visible" className="hero-letter">
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
+      {/* Content Overlay */}
+      <div className="hero-content">
+        {/* Action Buttons: Translucent Glass */}
+        <motion.div 
+          className="buttn" 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <motion.a 
+            href={resumeUrl} 
+            download="Shantaram_Divgi_Resume.pdf" 
+            whileHover={{ scale: 1.04, y: -2 }} 
+            whileTap={{ scale: 0.96 }} 
+            className="btn-cv"
+            aria-label="Download CV as PDF"
+          >
+            <FaFileDownload /> Download CV
+          </motion.a>
+
+          <motion.a 
+            href="https://github.com/RamDivgi" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.04, y: -2 }} 
+            whileTap={{ scale: 0.96 }} 
+            className="btn-github"
+            aria-label="Visit Ram Divgi on GitHub"
+          >
+            <FaGithub /> GitHub
+          </motion.a>
+        </motion.div>
       </div>
 
-      {/* Buttons */}
-      <motion.div className="buttn" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.2 }}>
-        <motion.a href="resume.pdf" download="resume.pdf" whileHover={{ scale: 1.08, y: -3 }} whileTap={{ scale: 0.95 }} className="btn-cv">Download CV</motion.a>
-        <motion.a href="#contact" whileHover={{ scale: 1.08, y: -3 }} whileTap={{ scale: 0.95 }} className="btn-about">Let's Connect</motion.a>
-      </motion.div>
-
       {/* Scroll indicator */}
-      <motion.div className="scroll-indicator" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 1 }}>
+      <motion.div className="scroll-indicator" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.6 }} aria-hidden="true">
         <motion.div className="scroll-dot" animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }} />
       </motion.div>
-
     </div>
   );
 }

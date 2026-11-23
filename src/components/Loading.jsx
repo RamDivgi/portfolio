@@ -1,35 +1,43 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Loading.css";
 
 export default function Loading({ onLoadingComplete }) {
-  const [screen, setScreen] = useState("ram"); // "ram", "welcome", or "done"
+  const [screen, setScreen] = useState("ram"); // "ram", "welcome"
+
+  const handleComplete = useCallback(() => {
+    try {
+      sessionStorage.setItem("ram_portfolio_visited", "true");
+    } catch {
+      // Ignore sessionStorage exceptions
+    }
+    onLoadingComplete();
+  }, [onLoadingComplete]);
 
   useEffect(() => {
-    // Show RAM for 2 seconds
+    // Show RAM briefly (600ms), then welcome (650ms) for a responsive intro
     const ramTimer = setTimeout(() => {
       setScreen("welcome");
-    }, 2500);
+    }, 600);
 
-    // Show welcome for 2.5 seconds then complete
     const welcomeTimer = setTimeout(() => {
-      onLoadingComplete();
-    }, 5000);
+      handleComplete();
+    }, 1300);
 
     return () => {
       clearTimeout(ramTimer);
       clearTimeout(welcomeTimer);
     };
-  }, [onLoadingComplete]);
+  }, [handleComplete]);
 
   const letterVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2,
-        duration: 0.8,
+        delay: i * 0.1,
+        duration: 0.35,
         ease: "easeOut",
       },
     }),
@@ -38,17 +46,17 @@ export default function Loading({ onLoadingComplete }) {
   const screenVariants = {
     exit: {
       opacity: 0,
-      transition: { duration: 0.8 },
+      transition: { duration: 0.35 },
     },
   };
 
   const welcomeVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 1,
+        duration: 0.45,
         ease: "easeOut",
       },
     },
@@ -59,6 +67,9 @@ export default function Loading({ onLoadingComplete }) {
       className="loading-container"
       variants={screenVariants}
       exit="exit"
+      onClick={handleComplete}
+      title="Click to skip preloader"
+      style={{ cursor: "pointer" }}
     >
       <AnimatePresence mode="wait">
         {screen === "ram" && (
@@ -66,7 +77,7 @@ export default function Loading({ onLoadingComplete }) {
             key="ram"
             className="loading-content"
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.25 }}
           >
             <div className="ram-text">
               {["R", "A", "M"].map((char, i) => (
@@ -82,16 +93,15 @@ export default function Loading({ onLoadingComplete }) {
                 </motion.span>
               ))}
             </div>
-            {/* Animated dots under RAM */}
             <div className="animation-dots">
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={i}
                   className="dot"
-                  animate={{ y: [0, -10, 0] }}
+                  animate={{ y: [0, -8, 0] }}
                   transition={{
-                    duration: 1.2,
-                    delay: i * 0.2,
+                    duration: 0.75,
+                    delay: i * 0.12,
                     repeat: Infinity,
                   }}
                 />
@@ -108,15 +118,14 @@ export default function Loading({ onLoadingComplete }) {
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.25 }}
           >
             <div className="welcome-text">Welcome to my portfolio</div>
-            {/* Animated line under welcome */}
             <motion.div
               className="animated-line"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.15, duration: 0.45 }}
             />
           </motion.div>
         )}

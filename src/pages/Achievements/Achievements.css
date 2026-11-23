@@ -1,147 +1,349 @@
-.achievements{
-    width:100%;
-    padding:100px 10%;
-    background:var(--bg-color);
+.achievements {
+    width: 100%;
+    padding: 80px 10%;
+    background: var(--bg-color, #0a0a0a);
+    scroll-margin-top: 100px;
 }
 
-.achievement-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-    margin-top:60px;
+.achievements-container {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
-.achievement-card{
-
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    -webkit-backdrop-filter:var(--blur);
-    backdrop-filter:var(--blur);
-
-    padding:35px;
-    border-radius:20px;
-
-    text-align:center;
-
-    transition:.35s;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.18);
-
-    position:relative;
-
-    overflow:hidden;
-
+/* ── a) Patent banner: full-width glass card ── */
+.patent-banner {
+    position: relative;
+    background: rgba(20, 20, 20, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 28px 32px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 32px;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.achievement-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-100%;
-
-    width:100%;
-
-    height:100%;
-
-    background:linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.08),
-        transparent
-    );
-
-    transition:.8s;
-
+/* Subtle 1px blue-to-transparent gradient border on the left edge. No glow. */
+.patent-banner::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #60a5fa 0%, rgba(96, 165, 250, 0.35) 65%, transparent 100%);
 }
 
-.achievement-card:hover::before{
-
-    left:100%;
-
+.patent-banner:hover {
+    transform: translateY(-2px);
+    border-color: rgba(96, 165, 250, 0.35);
 }
 
-.achievement-card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 20px 45px rgba(0,0,0,.3);
-
+.patent-main {
+    display: flex;
+    flex-direction: column;
 }
 
-.achievement-icon{
-
-    width:70px;
-
-    height:70px;
-
-    margin:auto;
-
-    border-radius:50%;
-
-    background:linear-gradient(
-        135deg,
-        #8b5cf6,
-        #3b82f6
-    );
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:28px;
-
-    color:white;
-
-    margin-bottom:20px;
-
-    transition:.4s;
-
+.patent-label-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
 }
 
-.achievement-card:hover .achievement-icon{
-
-    transform:rotate(15deg) scale(1.1);
-
+.patent-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #60a5fa;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
 }
 
-.achievement-card h3{
-
-    color:var(--heading-color);
-
-    margin-bottom:10px;
-
+.patent-status-note {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 400;
 }
 
-.achievement-card h4{
-
-    color:var(--primary-color);
-
-    font-size:1rem;
-
-    margin-bottom:15px;
-
+.patent-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f8fafc;
+    line-height: 1.35;
+    margin: 0 0 8px;
 }
 
-.achievement-card p{
-
-    color:var(--text-color);
-
-    line-height:1.7;
-
+.patent-desc {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.55;
+    margin: 0;
 }
 
-@media(max-width:768px){
-
-.achievements{
-
-padding:80px 6%;
-
+.patent-highlights {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 24px;
 }
 
+.patent-highlight-item {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.patent-highlight-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.patent-highlight-item:first-child {
+    padding-top: 0;
+}
+
+/* ── Section blocks ── */
+.achievements-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.block-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f8fafc;
+    margin: 0 0 16px;
+    letter-spacing: 0.2px;
+}
+
+/* ── Responsive cards grid ── */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* ── b) Primary Certifications cards ── */
+.cert-card {
+    background: rgba(20, 20, 20, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 22px 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    min-height: 110px;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-2.5px);
+    border-color: rgba(96, 165, 250, 0.4);
+}
+
+.card-issuer {
+    font-size: 11px;
+    font-weight: 600;
+    color: #60a5fa;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: #f8fafc;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* ── c) Learning & Courses: visually secondary ── */
+.secondary-card {
+    background: rgba(20, 20, 20, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.secondary-card .card-issuer {
+    color: #93c5fd;
+    opacity: 0.88;
+}
+
+.secondary-card .card-title {
+    color: #e2e8f0;
+    font-size: 14px;
+}
+
+.secondary-card:hover {
+    border-color: rgba(147, 197, 253, 0.35);
+}
+
+.card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.card-tag {
+    font-size: 11px;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.card-note {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: auto;
+    padding-top: 6px;
+    line-height: 1.4;
+}
+
+/* ── d) Learning Areas row ── */
+.learning-areas-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 16px 22px;
+    background: rgba(20, 20, 20, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.learning-areas-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.learning-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.learning-chip {
+    font-size: 13.5px;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 5px 13px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* ── Responsive breakpoints ── */
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .patent-banner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .patent-highlights {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-left: 0;
+        padding-top: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .achievements {
+        padding: 60px 20px;
+    }
+
+    .achievements-container {
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .patent-banner {
+        padding: 20px;
+    }
+
+    .patent-title {
+        font-size: 17.5px;
+    }
+
+    .patent-desc {
+        font-size: 13.5px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .cert-card {
+        padding: 18px 20px;
+        min-height: auto;
+    }
+
+    .learning-areas-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 390px) {
+    .achievements {
+        padding: 50px 16px;
+    }
+
+    .patent-banner {
+        padding: 16px;
+    }
+
+    .patent-title {
+        font-size: 16px;
+    }
+
+    .patent-desc {
+        font-size: 13px;
+    }
+
+    .patent-highlight-item {
+        font-size: 12.5px;
+        padding: 8px 0;
+    }
+
+    .cert-card {
+        padding: 16px 16px;
+    }
+
+    .card-title {
+        font-size: 13.5px;
+    }
 }

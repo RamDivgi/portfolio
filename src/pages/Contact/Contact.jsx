@@ -5,12 +5,11 @@ import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 import {
   FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaPaperPlane
 } from "react-icons/fa";
 
 function Contact() {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,7 +26,6 @@ function Contact() {
   };
 
   const sendEmail = async (e) => {
-
     e.preventDefault();
 
     if (loading) return;
@@ -43,15 +41,21 @@ function Contact() {
 
     setLoading(true);
 
-    try {
-      // Temporary console logs for the environment variables
-      console.log("VITE_EMAILJS_SERVICE_ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
-      console.log("VITE_EMAILJS_TEMPLATE_ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-      console.log("VITE_EMAILJS_PUBLIC_KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error("Direct service unavailable. Opening your default mail client!");
+      window.location.href = `mailto:sarveshdivgi@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}`;
+      setLoading(false);
+      return;
+    }
+
+    try {
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -59,7 +63,7 @@ function Contact() {
           time: new Date().toLocaleString()
         },
         {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+          publicKey: publicKey
         }
       );
 
@@ -71,83 +75,69 @@ function Contact() {
         message: ""
       });
 
-    } catch (error) {
-
-      console.error("EmailJS Error:", error);
-      console.log("Status:", error.status);
-      console.log("Text:", error.text);
-
-      toast.error("Failed to send message. Please try again.");
-
+    } catch {
+      toast.error("Unable to send via form. Redirecting to mail client...");
+      window.location.href = `mailto:sarveshdivgi@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}`;
     } finally {
-
       setLoading(false);
-
     }
-
   };
 
   return (
-
-    <div className="contact" id="contact">
-
+    <section className="contact" id="contact" aria-label="Contact Section">
       <motion.div
         className="title"
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <h2>Contact Me</h2>
       </motion.div>
 
       <div className="contact-container">
-
         {/* Contact Info */}
-
         <motion.div
           className="contact-info"
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-
           <h3>Get In Touch</h3>
 
           <p>
-            Interested in working together? Whether it's an internship, project,
-            collaboration, or career opportunity, feel free to get in touch.
+            Interested in software engineering, full-stack, or AI/ML opportunities?
+            Whether it's an internship, project collaboration, or technical discussion, feel free to reach out.
           </p>
 
           <div className="info-item">
-            <FaEnvelope className="contact-icon" />
-            <span>sarveshdivgi@gmail.com</span>
+            <FaEnvelope className="contact-icon" aria-hidden="true" />
+            <a
+              href="mailto:sarveshdivgi@gmail.com"
+              className="contact-link"
+              aria-label="Send email to sarveshdivgi@gmail.com"
+            >
+              sarveshdivgi@gmail.com
+            </a>
           </div>
 
           <div className="info-item">
-            <FaPhone className="contact-icon" />
-            <span>+91 8217200691</span>
+            <FaMapMarkerAlt className="contact-icon" aria-hidden="true" />
+            <span>Mangalore, Karnataka, India</span>
           </div>
-
-          <div className="info-item">
-            <FaMapMarkerAlt className="contact-icon" />
-            <span>Mangalore, Karnataka</span>
-          </div>
-
         </motion.div>
 
         {/* Contact Form */}
-
         <motion.form
           className="contact-form"
           onSubmit={sendEmail}
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
+          aria-label="Direct message form"
         >
-
           <input
             type="text"
             name="name"
@@ -155,6 +145,7 @@ function Contact() {
             value={formData.name}
             onChange={handleChange}
             autoComplete="name"
+            aria-label="Your Name"
             required
           />
 
@@ -165,33 +156,32 @@ function Contact() {
             value={formData.email}
             onChange={handleChange}
             autoComplete="email"
+            aria-label="Your Email"
             required
           />
 
           <textarea
-            rows="6"
+            rows="5"
             name="message"
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
+            aria-label="Your Message"
             required
           />
 
           <button
             type="submit"
             disabled={loading}
+            className="contact-submit-btn"
+            aria-label="Submit message"
           >
-            {loading ? "Sending..." : "Send Message"}
+            <FaPaperPlane aria-hidden="true" /> {loading ? "Sending..." : "Send Message"}
           </button>
-
         </motion.form>
-
       </div>
-
-    </div>
-
+    </section>
   );
-
 }
 
 export default Contact;

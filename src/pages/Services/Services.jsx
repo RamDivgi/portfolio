@@ -59,7 +59,7 @@ function Services() {
         <motion.div className="service-card" variants={itemVariants}>
           <FaChartBar className="service-icon" />
           <h3>Data Analytics</h3>
-          <p>Creating interactive dashboards and extracting insights using Python, SQL, Power BI, Tableau, and data visualization.</p>
+          <p>Extracting actionable business insights and creating visualizations using Python, Pandas, NumPy, Matplotlib, Plotly, and SQL.</p>
         </motion.div>
 
       </motion.div>
