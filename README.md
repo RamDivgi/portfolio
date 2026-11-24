@@ -4,7 +4,7 @@ Welcome to my personal portfolio repository! This is a modern, highly interactiv
 
 ## 🚀 Live Demo
 
-You can view the live website here: [Live Demo](https://ramdivgi.github.io/portfolio/)
+You can view the live website here: [Live Demo](https://portfolio-ramdivgi.vercel.app/)
 
 ---
 
@@ -66,7 +66,7 @@ If you'd like to run this project on your local machine, follow these steps:
    ```bash
    npm run dev
    ```
-   *The app will be running at `http://localhost:5173/portfolio/`*
+   *The app will be running at `http://localhost:5173/`*
 
 ---
 

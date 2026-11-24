@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="./icon.png" />
+    <link rel="icon" type="image/png" href="/icon.png" />
     
     <!-- Primary Meta Tags -->
     <title>Ram | Full Stack Developer & AI/ML Engineer</title>
@@ -14,22 +14,181 @@
 
     <!-- Open Graph / LinkedIn / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ramdivgi.github.io/portfolio/" />
+    <meta property="og:url" content="https://portfolio-ramdivgi.vercel.app/" />
     <meta property="og:title" content="Ram | Full Stack Developer & AI/ML Engineer" />
     <meta property="og:description" content="AI/ML engineering undergraduate building full-stack, GenAI and RAG applications with React, TypeScript, FastAPI, and Python." />
-    <meta property="og:image" content="https://ramdivgi.github.io/portfolio/og-image.png" />
+    <meta property="og:image" content="/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://ramdivgi.github.io/portfolio/" />
+    <meta property="twitter:url" content="https://portfolio-ramdivgi.vercel.app/" />
     <meta property="twitter:title" content="Ram | Full Stack Developer & AI/ML Engineer" />
     <meta property="twitter:description" content="AI/ML engineering undergraduate building full-stack, GenAI and RAG applications with React, TypeScript, FastAPI, and Python." />
-    <meta property="twitter:image" content="https://ramdivgi.github.io/portfolio/og-image.png" />
+    <meta property="twitter:image" content="/og-image.png" />
+
+    <!-- Inline base dark styling and asset-failure fallback styles -->
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #0a0a0a;
+        color: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        min-height: 100vh;
+      }
+      #initial-loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        font-size: 1.15rem;
+        color: #94a3b8;
+        letter-spacing: 0.5px;
+      }
+      .app-error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 24px;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #0a0a0a;
+        background-image: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        color: #f8fafc;
+      }
+      .app-error-box {
+        max-width: 540px;
+        width: 100%;
+        padding: 36px 28px;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 16px;
+        box-sizing: border-box;
+      }
+      .app-error-title {
+        font-size: 1.85rem;
+        font-weight: 700;
+        color: #f8fafc;
+        margin: 0 0 12px;
+      }
+      .app-error-msg {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+        margin: 0 0 24px;
+      }
+      .app-error-msg a {
+        color: #60a5fa;
+        text-decoration: underline;
+      }
+      .app-error-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .app-error-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 22px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(96, 165, 250, 0.15);
+        color: #ffffff;
+        transition: all 0.2s ease;
+      }
+      .app-error-btn:hover {
+        background: rgba(96, 165, 250, 0.25);
+      }
+      .app-error-tech {
+        font-size: 0.82rem;
+        color: #94a3b8;
+        margin-top: 14px;
+        word-break: break-word;
+        font-family: monospace;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
+
+    <!-- Fail-safe inline script: placed in <head> so it captures asset load errors -->
+    <script>
+      (function() {
+        var errorDetails = '';
+
+        function renderError(detail) {
+          var root = document.getElementById('root');
+          if (!root || root.getAttribute('data-mounted') === 'true') return;
+          var techMsg = detail ? '<div class="app-error-tech">' + detail + '</div>' : '';
+          root.innerHTML =
+            '<div class="app-error-container">' +
+              '<div class="app-error-box">' +
+                '<h1 class="app-error-title">The portfolio could not be loaded.</h1>' +
+                '<p class="app-error-msg">' +
+                  'Please refresh the page, or check the source code on ' +
+                  '<a href="https://github.com/RamDivgi" target="_blank" rel="noopener noreferrer">GitHub</a>.' +
+                '</p>' +
+                '<div class="app-error-actions">' +
+                  '<button class="app-error-btn" onclick="window.location.reload()">Reload page</button>' +
+                  '<a class="app-error-btn" href="https://github.com/RamDivgi" target="_blank" rel="noopener noreferrer">View on GitHub</a>' +
+                '</div>' +
+                techMsg +
+              '</div>' +
+            '</div>';
+        }
+
+        window.addEventListener('error', function(event) {
+          var target = event.target || event.srcElement;
+          if (target && (target.tagName === 'SCRIPT' || target.tagName === 'LINK')) {
+            var url = target.src || target.href || 'resource';
+            errorDetails = 'Failed to load asset: ' + url;
+            renderError(errorDetails);
+          } else if (event.message) {
+            errorDetails = event.message;
+          }
+        }, true);
+
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event.reason) {
+            errorDetails = event.reason.message || String(event.reason);
+          }
+        });
+
+        setTimeout(function() {
+          var root = document.getElementById('root');
+          if (root && root.getAttribute('data-mounted') !== 'true') {
+            renderError(errorDetails || 'Application failed to initialize within 5 seconds.');
+          }
+        }, 5000);
+      })();
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="initial-loader">Loading...</div>
+    </div>
+
+    <noscript>
+      <div class="app-error-container">
+        <div class="app-error-box">
+          <h1 class="app-error-title">JavaScript Required</h1>
+          <p class="app-error-msg">This site needs JavaScript to run.</p>
+        </div>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
